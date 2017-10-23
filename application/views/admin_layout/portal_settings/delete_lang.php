@@ -13,7 +13,7 @@
       <div class="modal-footer vd_bg-white">		  
         <button type="button" class="btn btn-primary lang_delete_button" 
         data-lang-id='<?php echo $lang_id; ?>' 
-        data-url='<?php echo site_url()."admin/portal_settings/confirm_delete_language" ?>'
+        data-url='<?php echo site_url()."admin/Portal_Settings/confirm_delete_language" ?>'
         >CONFIRM</button>
       </div>
     </div>

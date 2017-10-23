@@ -47,7 +47,7 @@
 		</form>
       </div>	  
       <div class="modal-footer vd_bg-white">		  
-        <button id="btn_save_language" data-url="<?php echo site_url()."admin/portal_settings/add_language" ?>" type="button" class="btn btn-primary ">Save</button>
+        <button id="btn_save_language" data-url="<?php echo site_url()."admin/Portal_Settings/add_language" ?>" type="button" class="btn btn-primary ">Save</button>
       </div>
     </div>
   </div>

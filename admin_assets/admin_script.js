@@ -33,11 +33,33 @@ $(document).ready(function(){
 		common_add_ajax_request(btn_save, container, fields, table_name);
 	});
 
+	/*
+	* Add coins by common add functionality
+	*/
+
+	$("button.btn-add-coins").click(function(){
+		var btn_save = $(this);
+		var container = "div#addCoins";
+		var table_name ="coins";
+		//var url = btn_save.attr('data-url');
+
+		var fields = {
+			'coins_amount' : 'input',		
+			'price' : 'input',		
+			'service1' : 'input',		
+			'coin_price1' : 'input',		
+			'service2' : 'input',		
+			'coin_price2' : 'input',		
+		}
+
+		common_add_ajax_request(btn_save, container, fields, table_name);
+	});
+
 	function common_add_ajax_request(btn_save, container, fields, table_name){
 
 	var form_container = btn_save.closest(container);
 	
-	var url = site_url+"admin/commoncontroller/commonadd";
+	var url = site_url+"admin/CommonController/commonadd";
 
 	var data = {};
 
@@ -396,7 +418,7 @@ $(document).ready(function(){
 	$("body").on("click", "a.btn_show_subcat", function(){
 			$("div#portal_sub_cat_popup").html('');
 		var root_cat_id = $(this).closest("tr.service_listing_tr").attr('data-main-cat-id');
-		var url = site_url+"admin/portal_settings/showSubCatPopUp";
+		var url = site_url+"admin/Portal_Settings/showSubCatPopUp";
 
 		var data = {
 			root_cat_id : root_cat_id
@@ -422,7 +444,7 @@ $(document).ready(function(){
 	$("body").on("click", "a.btn_show_keyword", function(){
 			$("div#portal_keyword_listing").html('');
 		var root_cat_id = $(this).closest("tr.service_listing_tr").attr('data-main-cat-id');
-		var url = site_url+"admin/portal_settings/showKeywordPopUp";
+		var url = site_url+"admin/Portal_Settings/showKeywordPopUp";
 
 		var data = {
 			root_cat_id : root_cat_id
@@ -534,7 +556,7 @@ $(document).ready(function(){
     	};
 
     	$.ajax({
-		url : site_url+"admin/portal_settings/edit_company_type",
+		url : site_url+"admin/Portal_Settings/edit_company_type",
 		method : "POST",
 		datatype : 'JSON',
 		data : data

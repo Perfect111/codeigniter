@@ -30,7 +30,6 @@ class Portal_Settings extends Dashboard_Controller {
 
 		$data['all_language'] = $this->Settings_Model->get_all_language_data($table_name="languages");
 
-		//$data['all_lang_table'] = $this->My_Model->get_model_data($table_name="lang_tables");
 		$this->load->view($template."/index", $data);
 	}
 
@@ -229,5 +228,17 @@ class Portal_Settings extends Dashboard_Controller {
 		$return_data = $this->My_Model->commonEdit($table_name, $id, $data_array);
 
 		echo json_encode($return_data);
+	}
+
+
+	/* ====================================================================
+	* ++++++++++++++++++++++++ Policy and Terms +++++++++++++++++++++++++++
+	*======================================================================
+	*/
+
+	public function policy_terms(){
+		$data['content'] = $this->template."/portal_settings/policy_terms/main";
+		//$data['model_data'] = $this->My_Model->get_model_data('company_type');
+		$this->load->view($this->template."/index", $data);
 	}
 }

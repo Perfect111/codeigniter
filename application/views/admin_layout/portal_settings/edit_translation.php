@@ -8,7 +8,7 @@
         <h4 class="modal-title vd_white">EDIT <?php echo $data_lang_name; ?> TRANSLATION</h4>
       </div>
       <div class="modal-body">
-        <form method="post" data-url='<?php echo site_url()."admin/portal_settings/edit_translation_data" ?>'>
+        <form method="post" data-url='<?php echo site_url()."admin/Portal_Settings/edit_translation_data" ?>'>
     			<div class="form-group clearfix">
     				<h4 class="col-sm-4 control-label text-right">ENGLISH</h4>
     				<h4 class="col-sm-7 "><?php echo $data_lang_name; ?></h4>

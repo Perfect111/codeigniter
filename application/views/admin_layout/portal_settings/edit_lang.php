@@ -11,7 +11,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<table class="discountTable table"
-					data-action-url='<?php echo site_url()."admin/portal_settings/get_edit_translatoin_data" ?>'>
+					data-action-url='<?php echo site_url()."admin/Portal_Settings/get_edit_translatoin_data" ?>'>
 						<colgroup>
 							<col width="10%">
 							<col width="15%">

@@ -90,7 +90,7 @@ class Settings_Model extends CI_Model{
 		$query = "SELECT languages.* , count(translation.language_id) as total , count(NULLIF(translation.translated_string, '')) as translated FROM languages
 				LEFT JOIN translation on languages.id = translation.language_id
 				WHERE languages.is_deleted = 0
-				group by languages.lang_name ORDER by languages.id asc
+				group by languages.id ORDER by languages.id asc
 				";
 
 		$result = $this->db->query($query);
@@ -122,7 +122,7 @@ class Settings_Model extends CI_Model{
 				LEFT JOIN translation on lang_tables.id = translation.lang_table_id
 				WHERE translation.language_id = {$lang_id}
 
-				group by lang_tables.name ORDER by lang_tables.id asc";
+				group by lang_tables.id ORDER by lang_tables.id asc";
 
 				$result = $this->db->query($query);
 

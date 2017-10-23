@@ -148,7 +148,7 @@
 						<div class="child-menu" data-action="click-target">
 							<ul>
 								<li>
-									<a href="create-coins.html"><span class="menu-text"><span class="append-icon icon-plus2"></span> Create Coins</span></a>
+									<a href="<?php echo site_url()."admin/coins/create_coins" ?>"><span class="menu-text"><span class="append-icon icon-plus2"></span> Create Coins</span></a>
 								</li>
 								<li>
 									<a href="history.html"><span class="menu-text"><span class="append-icon icon-history"></span> History</span></a>
@@ -321,13 +321,13 @@
 						<div class="child-menu" data-action="click-target">
 							<ul>
 								<li>
-									<a href="<?php echo site_url()."admin/portal_settings/language"?>"><span class="menu-text"><span class="append-icon icon-language"></span> Website Languages</span></a>
+									<a href="<?php echo site_url()."admin/Portal_Settings/language"?>"><span class="menu-text"><span class="append-icon icon-language"></span> Website Languages</span></a>
 								</li>
 								<li>
 									<a href="settings.html"><span class="menu-text"><i class="append-icon fa fa-fw fa-gears"></i> Website Settings</span></a>
 								</li>
 								<li>
-									<a href="<?php echo site_url()?>admin/portal_settings/company_type"><span class="menu-text"><i class="append-icon fa fa-fw fa-asterisk"></i> Company Type</span></a>
+									<a href="<?php echo site_url()?>admin/Portal_Settings/company_type"><span class="menu-text"><i class="append-icon fa fa-fw fa-asterisk"></i> Company Type</span></a>
 								</li>								
 								<li>
 									<a href="administrator.html"><span class="menu-text"><span class="append-icon icon-user"></span> Admin</span></a>
@@ -342,7 +342,7 @@
 									<a href="policy-terms.html"><span class="menu-text"><i class="append-icon fa fa-fw fa-gavel"></i> Policy&amp;Terms</span></a>
 								</li>
 								<li>
-									<a href="<?php echo site_url()."admin/portal_settings/service"?>"><span class="menu-text"><i class="append-icon glyphicon glyphicon-qrcode"></i> Our Services</span></a>
+									<a href="<?php echo site_url()."admin/Portal_Settings/service"?>"><span class="menu-text"><i class="append-icon glyphicon glyphicon-qrcode"></i> Our Services</span></a>
 								</li>
 								<li>
 									<a href="service-comission.html"><span class="menu-text"><i class="append-icon glyphicon glyphicon-usd"></i> Service Comission</span></a>

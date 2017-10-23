@@ -35,8 +35,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<table class="discountTable table language_list"
-					data-edit-lang-url='<?php echo site_url()."admin/portal_settings/get_edit_language_data" ?>'
-					data-delete-lang-url='<?php echo site_url()."admin/portal_settings/delete_language_data" ?>'
+					data-edit-lang-url='<?php echo site_url()."admin/Portal_Settings/get_edit_language_data" ?>'
+					data-delete-lang-url='<?php echo site_url()."admin/Portal_Settings/delete_language_data" ?>'
 					>
 						<colgroup>
 							<col width="10%">
