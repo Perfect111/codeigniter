@@ -55,6 +55,68 @@ $(document).ready(function(){
 		common_add_ajax_request(btn_save, container, fields, table_name);
 	});
 
+	/*
+	* Update Coins by common update functionality
+	*/
+
+	$("button.btn-edit-coins").click(function(){
+		var btn_save = $(this);
+		var container = "div.editCoins";
+		var table_name ="coins";
+		//var url = btn_save.attr('data-url');
+
+		var fields = {
+			'id' : 'input',
+			'coins_amount' : 'input',		
+			'price' : 'input',		
+			'service1' : 'input',		
+			'coin_price1' : 'input',		
+			'service2' : 'input',		
+			'coin_price2' : 'input',		
+		}
+
+		common_update_ajax_request(btn_save, container, fields, table_name);
+	});
+
+
+	function common_update_ajax_request(btn_save, 
+		container, fields, table_name){
+
+	var form_container = btn_save.closest(container);
+	
+	var url = site_url+"admin/CommonController/commonUpdate";
+
+	var data = {};
+
+
+	for(var prop in fields){
+		var value = form_container.find(fields[prop]+"#"+prop).val();
+		data[prop] = value;
+	}
+
+	data['table_name'] = table_name;
+
+	console.log(data);
+	
+	$.ajax({
+		url : url,
+		method : "POST",
+		datatype : 'JSON',
+		data : data
+	}).done(function(data){
+		var obj = JSON.parse(data);
+
+		if(obj.status){
+			alert(obj.msg);
+			location.reload();
+		}
+	});
+	
+
+}
+
+
+
 	function common_add_ajax_request(btn_save, container, fields, table_name){
 
 	var form_container = btn_save.closest(container);
@@ -501,6 +563,22 @@ $(document).ready(function(){
 
 		common_delete_function(table_name, id);
 	});
+
+
+	/*
+	* Delete Coins
+	*/
+
+	$("body").on("click", "a.delete_coins", function(){
+		var btn_action = $(this);
+
+		var table_name = "coins";
+		var id = btn_action.attr('data-id');
+
+		common_delete_function(table_name, id);
+	});
+
+
 
 
 	/*

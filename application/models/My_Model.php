@@ -17,6 +17,20 @@ class My_Model extends CI_Model{
 		return $return_data;
 	}
 
+	public function update($table_name, $data_array, $id){
+		$return_data = array();
+		if($this->db->update($table_name, $data_array, array('id' => $id))){
+			//echo $this->db->last_query();die();
+			$return_data['status'] = true;
+			$return_data['msg'] = "Updated successfully!";
+		}else{
+			$return_data['status'] = false;
+			$return_data['status'] = "Operatoin Fail";
+		}
+
+		return $return_data;
+	}
+
 	public function commonEdit($table_name, $id, $data_array){
 		$return_data = array();
 		if($this->db->update($table_name, $data_array, array('id' => $id))){

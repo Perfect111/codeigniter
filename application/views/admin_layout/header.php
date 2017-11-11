@@ -124,7 +124,7 @@
 				<div class="vd_top-nav vd_nav-width">
 					<div class="vd_panel-header">
 						<div class="logo">
-							<a href="/"><img alt="logo" src="<?php echo $this->assets_uri; ?>img/logo.png"></a>
+							<a href="<?php echo site_url(); ?>"><img alt="logo" src="<?php echo $this->assets_uri; ?>img/logo.png"></a>
 						</div>
 						<div class="vd_panel-menu  hidden-sm hidden-xs" data-intro="<strong>Minimize Left Navigation</strong><br/>Toggle navigation size to medium or small size. You can set both button or one button only. See full option at documentation." data-step=1>
 							<span class="nav-medium-button menu" data-toggle="tooltip" data-placement="bottom" data-original-title="Medium Nav Toggle" data-action="nav-left-medium"><i class="fa fa-bars"></i></span>

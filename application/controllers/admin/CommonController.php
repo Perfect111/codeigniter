@@ -25,6 +25,19 @@ class CommonController extends CI_Controller {
 		echo json_encode($status);
 	}
 
+	public function commonUpdate(){
+		$table_name = $this->input->post('table_name');
+		$id = $this->input->post('id');
+		$post_data = $this->input->post();
+
+		unset($post_data['table_name']);
+		unset($post_data['id']);
+
+		$status = $this->My_Model->update($table_name, $post_data, $id);
+
+		echo json_encode($status);
+	}
+
 	
 
 	public function commonDelete(){

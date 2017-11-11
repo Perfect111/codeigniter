@@ -54,23 +54,27 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach($all_coins as $coin): ?>
+							<?php $i=0; foreach($all_coins as $coin): ?>
 							<tr>
-								<td>1</td>
+								<td><?php echo ++$i; ?></td>
 								<td><?php echo $coin['coins_amount'] ?></td> 
 								<td class="menu-action"><?php echo $coin['price'] ?></td>
 								<td><?php echo $coin['service1'] ?></td>
 								<td><?php echo $coin['coin_price1'] ?></td>
 								<td><?php echo $coin['service2'] ?></td>
-								<td><?php echo $coin['coin_price1'] ?></td>
+								<td><?php echo $coin['coin_price2'] ?></td>
 								<td>
 									<div class="pdng5">
-										<a data-toggle="modal" data-target="#" class="btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-pencil" data-original-title="Edit" data-toggle="tooltip" data-placement="top" ></i></a>
-										<a data-toggle="modal" data-target="#" class="btn menu-icon vd_bd-red vd_red"><i class="fa fa-trash-o" data-original-title="Remove" data-toggle="tooltip" data-placement="top" ></i></a>
+										<a data-id="<?php echo $coin['id'] ?>" data-toggle="modal" data-target="#editCoins<?php echo $coin['id'] ?>" class="btn menu-icon edit_coins vd_bd-yellow vd_yellow"><i class="fa fa-pencil" data-original-title="Edit" data-toggle="tooltip" data-placement="top" ></i></a>
+
+										<a data-id="<?php echo $coin['id'] ?>" data-toggle="modal" data-target="#" class="btn delete_coins menu-icon vd_bd-red vd_red"><i class="fa fa-trash-o" data-original-title="Remove" data-toggle="tooltip" data-placement="top" ></i></a>
 									</div>
 								</td>
 							</tr>
-							<?php endforeach; ?>
+							<?php 
+								$this->load->view('admin_layout/coins/edit_coins', $coin);
+								endforeach; 
+							?>
 						</tbody>
 					</table>
 				</div><!-- col-md-12 end --> 
@@ -81,4 +85,6 @@
       </div><!-- vd_container end -->
     </div><!-- vd_content-wrapper end -->
 
-    <?php $this->load->view('admin_layout/coins/add_coins.php'); ?>
+    <?php 
+    $this->load->view('admin_layout/coins/add_coins');
+    ?>
