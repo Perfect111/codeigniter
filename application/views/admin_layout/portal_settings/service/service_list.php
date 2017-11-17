@@ -1,6 +1,7 @@
 <?php $i=1; foreach ($service_listing as $key => $value): ?>
 <tr class="service_listing_tr" data-main-cat-id="<?php echo $value['id']; ?>">
     <td ><?php echo $i++; ?></td>
+    <td ><img width="50px" height="50px" src="<?php echo site_url()."uploads/images/category/".$value['image'] ?>"></td>
     <td><?php echo $value['name']; ?></td>
     <td><a class="btn_show_subcat" href="javascript:void(0);" data-toggle="modal" 
     data-target="#subcategories"><?php echo $value['sub_cat_count']; ?></a></td>

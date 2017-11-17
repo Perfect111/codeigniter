@@ -134,12 +134,28 @@ class Portal_Settings extends Dashboard_Controller {
 	*/
 
 	public function addMainCat(){
-		die("hi");
-		$cat_names = $this->input->post('cat_names');
+		
+		$cat_names = $this->input->post('name');
+		//$file = $this->input->post($_FILES['cat_image']);
+		//print_r($_FILES);die("hi");
+		//print_r($_FILES["cat_image"]);
+		foreach ($_FILES['cat_image']['name'] as $name => $value){
+				if(is_uploaded_file($_FILES['cat_image']['tmp_name'][$name])) {
+					
+				$sourcePath = $_FILES['cat_image']['tmp_name'][$name];
+				//$imgContent = addslashes(file_get_contents($image));
+				$targetPath = FCPATH."uploads/images/category/".$_FILES['cat_image']['name'][$name];
+				if(move_uploaded_file($sourcePath,$targetPath)) {
+						$file_name[] = $_FILES['cat_image']['name'][$name];
+					}
+			}
+		}
 
-		$return_result = $this->Settings_Model->addMainCat($cat_names);
+		$return_result = $this->Settings_Model->addMainCat($cat_names, $main_cat_id=0, $file_name);
+	
 
 		echo json_encode($return_result);
+		redirect('admin/Portal_Settings/service');
 	}
 
 

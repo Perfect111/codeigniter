@@ -345,26 +345,28 @@ $(document).ready(function(){
 
 	$("body").on("click", "button.btn_save_category", function(){
 		var btn_action = $(this);
+		var form_element = btn_action.closest("div#addMaincategory").find("form");
 		var url = btn_action.closest("div#addMaincategory").find("form").attr('action');
 
 		var cat_names = new Array();
-		var cat_image = new Array();
-		var form_data = new FormData();
+		//var cat_image = new Array();
+		var cat_image = new FormData(form_element);
 
 		btn_action.closest("div#addMaincategory").find("input.input_cat_name").each(function(){
 			cat_names.push($(this).val());
 		});
 
-		var file_data = btn_action.closest("div#addMaincategory").find("input.input_cat_image").prop('files')[0]; 
+		//var file_data = btn_action.closest("div#addMaincategory").find("input.input_cat_image").prop('files')[0]; 
 
-		/*var form_data = {
+		var form_data = {
 			cat_names : cat_names,
-			file_data : file_data
-		};*/
-
-		form_data.append('cat_names', cat_names);
-		form_data.append('file', file_data);
-
+			file_data : cat_image
+		};
+//console.log("cat_names");		
+//console.log(cat_names);
+		//form_data.append('cat_names', cat_names);
+		//form_data.append('file', file_data);
+//console.log(form_data);
 		$.ajax({
 			url : url,
 			method : "POST",
@@ -587,7 +589,7 @@ $(document).ready(function(){
 	$("body").on("click", "button.common_delete_button", function(){
 		var btn_action = $(this);
 
-		var url = site_url+"admin/commoncontroller/commonDeleteConfirm";
+		var url = site_url+"admin/CommonController/commonDeleteConfirm";
 		var id = btn_action.attr('data-id');
 		var table_name = btn_action.attr('data-table');
 
@@ -705,7 +707,7 @@ function add_language(btn_save, container, fields, url){
 function common_delete_function(table_name, id){
 	$("div#common_popup_container").html('');
 		var btn_action = $(this);
-		var url = site_url+"admin/commoncontroller/commonDelete";
+		var url = site_url+"admin/CommonController/commonDelete";
 
 
 		var data = {

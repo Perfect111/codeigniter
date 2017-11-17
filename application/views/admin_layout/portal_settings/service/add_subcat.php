@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         <form method="post"
-        action='<?php echo site_url() ?>admin/portal_settings/addSubCat'>
+        action='<?php echo site_url() ?>admin/Portal_Settings/addSubCat'>
       <div class="form-group">
         <select class="custom-select parent" name="parent">
               <option value="0" selected="selected">Please select main category</option>

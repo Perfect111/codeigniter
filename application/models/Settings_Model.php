@@ -180,10 +180,12 @@ class Settings_Model extends CI_Model{
 	* Add Main Category
 	*/
 
-	public function addMainCat($cat_names, $main_cat_id=0){
+	public function addMainCat($cat_names, $main_cat_id=0, $file_name=0){
+		//print_r($file_name);die();
 		$insert_data = array();
 		$return_result = array();
 
+		$i = 0;
 		foreach($cat_names as $cat){
 			$raw_data = array();
 
@@ -195,12 +197,14 @@ class Settings_Model extends CI_Model{
 
 			$raw_data['parent_id'] = $main_cat_id;
 			$raw_data['name'] = $cat;
+			$raw_data['image'] = $file_name[$i];
 			$raw_data['description'] = '';
 
 			$insert_data[] = $raw_data;
-
+			$i++;
 		}
 
+//print_r($insert_data); die();
 		if(count($insert_data) > 0){
 			if($this->db->insert_batch('category', $insert_data)){
 				$return_result['status'] = true;
@@ -265,6 +269,7 @@ class Settings_Model extends CI_Model{
 
 				$raw_data['id'] = $id;
 				$raw_data['name'] = $cat['name'];
+				$raw_data['image'] = $cat['image'];
 				$raw_data['sub_cat_count'] = $this->getTotalSubcatByRootCat($id, $return_count=1);
 				$raw_data['keyword_count'] = $this->getTotalKeywordByCat($id, $return_count=1);
 

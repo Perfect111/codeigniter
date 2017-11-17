@@ -8,20 +8,21 @@
         <h4 class="modal-title vd_white">ADD MAINCATEGORY</h4>
       </div>
       <div class="modal-body">
-        <form method="post" 
-        action='<?php echo site_url() ?>admin/portal_settings/addMainCat'>
+        <form id="addMainCatForm" method="post" 
+        action='<?php echo site_url() ?>admin/Portal_Settings/addMainCat' enctype="multipart/form-data">
       <div class="entry form-group">
         <div class="input-group">
-          <input type="text" name="name[]" placeholder="Put the name here" class="input_cat_name">
-          <input type="file" name="cat_image[]" placeholder="Put the name here" class="input_cat_image">
+          <input type="text" name="name[]" placeholder="Put the name here" class="input_cat_name" required>
+          <input type="file" name="cat_image[]" placeholder="Put the name here" class="input_cat_image" required>
           <span class="input-group-addon add-more">+</span>
       </div>
     </div>
+     <div class="modal-footer vd_bg-white">      
+        <input type="submit" class="btn_save_category btn btn-primary" value="Save" />
+      </div>
     </form>
       </div>    
-      <div class="modal-footer vd_bg-white">      
-        <button type="button" class="btn_save_category btn btn-primary " data-dismiss="modal">Save</button>
-      </div>
+     
     </div>
   </div>
 </div>

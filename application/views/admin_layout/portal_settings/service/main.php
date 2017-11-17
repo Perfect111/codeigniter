@@ -50,6 +50,7 @@
                       <thead>
                         <tr>
                           <th>#</th>
+                          <th>Image</th>
                           <th>Maincategory</th>
                           <th>Subcategory</th>
                           <th>Keywords</th>
