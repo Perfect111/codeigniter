@@ -204,7 +204,6 @@ class Settings_Model extends CI_Model{
 			$i++;
 		}
 
-//print_r($insert_data); die();
 		if(count($insert_data) > 0){
 			if($this->db->insert_batch('category', $insert_data)){
 				$return_result['status'] = true;
@@ -212,6 +211,7 @@ class Settings_Model extends CI_Model{
 			}else{
 				$return_result['status'] = false;
 				$return_result['msg'] = 'Categories are not added!';
+				echo $this->db->last_query();
 			}
 		}
 

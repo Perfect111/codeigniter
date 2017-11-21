@@ -56,6 +56,12 @@ $(document).ready(function(){
 	});
 
 	/*
+	* Update category by common update functionality
+	*/
+
+	//$("a.cat-edit").click
+
+	/*
 	* Update Coins by common update functionality
 	*/
 
@@ -360,13 +366,13 @@ $(document).ready(function(){
 
 		var form_data = {
 			cat_names : cat_names,
-			file_data : cat_image
+			file_data : file_data
 		};
-//console.log("cat_names");		
-//console.log(cat_names);
+console.log("cat_names");		
+console.log(cat_names);
 		//form_data.append('cat_names', cat_names);
 		//form_data.append('file', file_data);
-//console.log(form_data);
+console.log(form_data);
 		$.ajax({
 			url : url,
 			method : "POST",
@@ -406,6 +412,47 @@ $(document).ready(function(){
 			return;
 		}
 		btn_action.closest("div#addSubcategory").find("input.input_subcat_name").each(function(){
+			cat_names.push($(this).val());
+		});
+
+		var data = {
+			main_cat_id : main_cat_id,
+			cat_names : cat_names
+		};
+
+		$.ajax({
+			url : url,
+			method : "POST",
+			datatype : 'JSON',
+			data : data
+		}).done(function(data){
+			var obj = JSON.parse(data);
+
+			if(!obj.status){
+				alert(obj.msg);
+			}else{
+				location.reload();
+			}
+		});
+	});
+
+
+	/*
+	* Add sub category from pop up list
+	*/
+
+	$("body").on("click", "button.btn_add_sub_cat_from_popup", function(){
+		var btn_action = $(this);
+		var url = btn_action.closest("div#addSubcategoryPopup").find("form").attr('action');
+
+		var cat_names = new Array();
+		var main_cat_id = btn_action.closest("div#addSubcategoryPopup").find("select.parent").val();
+		
+		if(main_cat_id == 0){
+			alert('Please select main category first.');
+			return;
+		}
+		btn_action.closest("div#addSubcategoryPopup").find("input.input_subcat_name").each(function(){
 			cat_names.push($(this).val());
 		});
 
@@ -497,6 +544,32 @@ $(document).ready(function(){
 			var obj = JSON.parse(data);
 			$("div#portal_sub_cat_popup").html(obj.html);
 			$("div#portal_sub_cat_popup").find("div#subcategories").modal();
+		});
+
+	});
+
+	/*
+	* Show addsubcat popup
+	*/
+	$("body").on("click", "button.addSubcategoryPopup", function(){
+			$("div#portal_add_sub_cat_from_popup").html('');
+		var root_cat_id = $(this).attr("data-parent-cat-id");
+
+		var url = site_url+"admin/Portal_Settings/showAddSubCatPopup";
+
+		var data = {
+			root_cat_id : root_cat_id
+		};
+
+		$.ajax({
+			url : url,
+			method : "POST",
+			datatype : 'JSON',
+			data : data
+		}).done(function(data){
+			var obj = JSON.parse(data);
+			$("div#portal_add_sub_cat_from_popup").html(obj.html);
+			$("div#portal_add_sub_cat_from_popup").find("div#addSubcategoryPopup").modal();
 		});
 
 	});

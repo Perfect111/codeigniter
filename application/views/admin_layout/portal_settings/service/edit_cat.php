@@ -1,4 +1,4 @@
-<div class="modal fade" id="editMaincategory" tabindex="-1" role="dialog" aria-labelledby="Add maincategory" aria-hidden="true">
+<div class="modal fade" id="editMaincategory<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="Add maincategory" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header vd_bg-green">
@@ -9,19 +9,25 @@
       </div>
       <div class="modal-body">
         <form method="post" 
-        action='<?php echo site_url() ?>admin/portal_settings/addMainCat'>
+        action='<?php echo site_url() ?>admin/portal_settings/editMainCat' enctype="multipart/form-data">
       <div class="entry form-group">
         <div class="input-group">
-          <input type="text" name="name[]" placeholder="Put the name here" class="input_cat_name">
+          <input type="hidden" name="id" value="<?php echo $id ?>">
+          <input type="text" name="name" placeholder="Put the name here" class="input_cat_name" value="<?php echo $name; ?>" required>
           <input type="file" name="cat_image[]" value="Put the name here" class="input_cat_image">
           <span class="input-group-addon"></span>
+          
+      </div>
+      <div>
+        <img width="50px" height="50px" src="<?php echo site_url()."uploads/images/category/".$image ?>">
       </div>
     </div>
+    <div class="modal-footer vd_bg-white">      
+        <input type="submit" class="btn_save_category btn btn-primary" value="Save" />
+      </div>
     </form>
       </div>    
-      <div class="modal-footer vd_bg-white">      
-        <button type="button" class="btn_edit_category btn btn-primary " data-dismiss="modal">Save</button>
-      </div>
+      
     </div>
   </div>
 </div>

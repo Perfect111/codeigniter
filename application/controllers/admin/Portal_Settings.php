@@ -135,10 +135,7 @@ class Portal_Settings extends Dashboard_Controller {
 
 	public function addMainCat(){
 		
-		$cat_names = $this->input->post('name');
-		//$file = $this->input->post($_FILES['cat_image']);
-		//print_r($_FILES);die("hi");
-		//print_r($_FILES["cat_image"]);
+		$cat_names = $this->input->post('name');		
 		foreach ($_FILES['cat_image']['name'] as $name => $value){
 				if(is_uploaded_file($_FILES['cat_image']['tmp_name'][$name])) {
 					
@@ -158,6 +155,45 @@ class Portal_Settings extends Dashboard_Controller {
 		redirect('admin/Portal_Settings/service');
 	}
 
+	/*
+	* Edit Main Category
+	*/
+
+	public function editMainCat(){
+		$id = $this->input->post('id');
+		$cat_name = $this->input->post('name');
+		$file_name = array();
+
+		
+			foreach ($_FILES['cat_image']['name'] as $name => $value){
+					if(is_uploaded_file($_FILES['cat_image']['tmp_name'][$name])) {
+						
+					$sourcePath = $_FILES['cat_image']['tmp_name'][$name];
+					//$imgContent = addslashes(file_get_contents($image));
+					$targetPath = FCPATH."uploads/images/category/".$_FILES['cat_image']['name'][$name];
+					if(move_uploaded_file($sourcePath,$targetPath)) {
+							$file_name[] = $_FILES['cat_image']['name'][$name];
+						}
+				}
+			}
+		
+
+		//print_r($file_name); die();
+		$data_array['name'] = $cat_name;
+		
+
+		if(!empty($file_name)){
+			$data_array['image'] = $file_name[0];
+		}
+
+		$this->My_Model->update($table_name="category", 
+			$data_array, $id);
+	
+		//print_r($data_array); die();
+		echo json_encode($return_result);
+		redirect('admin/Portal_Settings/service');
+	}
+
 
 	/*
 	* Add addSubCat
@@ -171,6 +207,19 @@ class Portal_Settings extends Dashboard_Controller {
 
 		echo json_encode($return_result);
 	}
+
+	/*
+	* Show pop for add SubCate from pop up list
+	*/
+
+	public function showAddSubCatPopup(){
+		$data['root_cat_id'] = $this->input->post('root_cat_id');
+		$data['main_category'] = $this->Settings_Model->getAllMainCat();
+
+		$return_result['html'] = $this->load->view($this->template."/portal_settings/service/add_subcat_from_popup", $data, true);
+
+		echo json_encode($return_result);
+	}	
 
 	/*
 	* Add keywords
@@ -194,6 +243,7 @@ class Portal_Settings extends Dashboard_Controller {
 	public function showSubCatPopUp(){
 		$root_cat_id = $this->input->post('root_cat_id');
 
+		$data['root_cat_id'] = $root_cat_id;
 		$data['sub_category'] = $this->Settings_Model->getTotalSubcatByRootCat($root_cat_id);
 		//$data['keywords'] = $this->Settings_Model->getTotalKeywordByCat($root_cat_id);
 

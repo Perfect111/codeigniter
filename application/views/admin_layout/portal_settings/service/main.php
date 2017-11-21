@@ -85,6 +85,8 @@
        ?>
     </div>
 
+
+
      <!-- KEYWORDS POPUP-->
     <div id="portal_keyword_listing">
     <?php //$this->load->view($this->template."/portal_settings/service/keywords_popup");
@@ -100,13 +102,19 @@
     <!-- Edit MAIN CATEGORIES -->
     <div id="edit_main_category_container">
     <?php 
-        $this->load->view($this->template."/portal_settings/service/edit_cat");
+        //$this->load->view($this->template."/portal_settings/service/edit_cat");
        ?>
     </div>
 
     <!-- ADD SUB CATEGORIES -->
     <div id="portal_sett_cat_listing">
     <?php $this->load->view($this->template."/portal_settings/service/add_subcat");
+       ?>
+    </div>
+
+    <!-- Add Sub Cat from pop up -->
+    <div id="portal_add_sub_cat_from_popup">
+    <?php //$this->load->view($this->template."/portal_settings/service/sub_cat_popup");
        ?>
     </div>
 

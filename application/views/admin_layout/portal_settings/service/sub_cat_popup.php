@@ -27,39 +27,11 @@
               </td>
             </tr>
           <?php endforeach; ?>
-            <!--<tr>
-              <td>Health</td>
-              <td class="menu-action">
-                <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-edit"></i></a>
-                <a data-original-title="remove" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-red vd_red"><i class="fa fa-times"></i></a>
-              </td>
-            </tr>			  
-            <tr>
-              <td>Salon</td>
-              <td class="menu-action">
-                <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-edit"></i></a>
-                <a data-original-title="remove" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-red vd_red"><i class="fa fa-times"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td>Health</td>
-              <td class="menu-action">
-                <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-edit"></i></a>
-                <a data-original-title="remove" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-red vd_red"><i class="fa fa-times"></i></a>
-              </td>
-            </tr>			  
-            <tr>
-              <td>Salon</td>
-              <td class="menu-action">
-                <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-edit"></i></a>
-                <a data-original-title="remove" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-red vd_red"><i class="fa fa-times"></i></a>
-              </td>
-            </tr>-->
           </tbody>
         </table>
       </div>	  
       <div class="modal-footer vd_bg-white">
-		  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addSubcategory"><i class="fa fa-plus-circle"></i> Add New</button>
+		  <button type="button" data-parent-cat-id="<?php echo $root_cat_id ?>" class="btn btn-primary addSubcategoryPopup" data-toggle="modal" data-target="#addSubcategoryPopup"><i class="fa fa-plus-circle"></i> Add New</button>
         <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
       </div>
     </div>
