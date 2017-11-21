@@ -84,10 +84,29 @@ $(document).ready(function(){
 		common_update_ajax_request(btn_save, container, fields, table_name);
 	});
 
+	/*
+	* Update Sub Category by common update functionality
+	*/
+
+	$("body").on("click", "button.btn_update_sub_cat", function(){
+		var btn_save = $(this);
+		var container = "div#editSubcategoryPopup";
+		var table_name ="category";
+		//var url = btn_save.attr('data-url');
+
+		var fields = {
+			'id' : 'input',
+			'parent_id' : 'select',		
+			'name' : 'input'		
+		}
+
+		common_update_ajax_request(btn_save, container, fields, table_name);
+	});
+
 
 	function common_update_ajax_request(btn_save, 
 		container, fields, table_name){
-
+console.log(fields)
 	var form_container = btn_save.closest(container);
 	
 	var url = site_url+"admin/CommonController/commonUpdate";
@@ -349,7 +368,7 @@ $(document).ready(function(){
 	*  Add category js
 	*/
 
-	$("body").on("click", "button.btn_save_category", function(){
+	/*$("body").on("click", "input.btn_save_category", function(){
 		var btn_action = $(this);
 		var form_element = btn_action.closest("div#addMaincategory").find("form");
 		var url = btn_action.closest("div#addMaincategory").find("form").attr('action');
@@ -389,11 +408,46 @@ console.log(form_data);
 			}
 		});
 
-	});
+	});*/
 
 	/*
 	* Edit category js 
 	*/
+
+	/*$("body").on("click", "input.btn_update_category", function(){
+		var btn_action = $(this);
+		var form_element = btn_action.closest("div#addMaincategory").find("form");
+		var url = btn_action.closest("div#addMaincategory").find("form").attr('action');
+
+		var cat_names = $this->input->post('name');
+		
+		var cat_image = new FormData(form_element);
+
+
+		//var file_data = btn_action.closest("div#addMaincategory").find("input.input_cat_image").prop('files')[0]; 
+
+		var form_data = {
+			cat_names : cat_names,
+			file_data : file_data
+		};
+
+		$.ajax({
+			url : url,
+			method : "POST",
+			datatype : 'JSON',
+
+			data : form_data
+		}).done(function(data){
+			var obj = JSON.parse(data);
+
+			if(!obj.status){
+				alert(obj.msg);
+			}else{
+				location.reload();
+			}
+		});
+
+	});*/
 
 
 	/*
@@ -435,6 +489,37 @@ console.log(form_data);
 			}
 		});
 	});
+
+	/*
+	* Show pop up for edit subCat
+	*/
+	$("body").on("click", "a.editSubCat", function(){
+		var btn_action = $(this);
+		var id = btn_action.attr('data-id');
+		var main_cat_id = btn_action.attr('data-parent-cat-id');
+		var sub_cat_name = btn_action.closest("tr").find('td.sub_cat_name').text();
+		var url = btn_action.attr('data-url');
+
+		var data = {
+			id : id,
+			main_cat_id : main_cat_id,
+			sub_cat_name : sub_cat_name
+		};
+
+		console.log(data)
+
+		$.ajax({
+			url : url,
+			method : "POST",
+			datatype : 'JSON',
+			data : data
+		}).done(function(data){
+			var obj = JSON.parse(data);
+			$("div#edit_sub_category_container").html(obj.html);
+			$("div#edit_sub_category_container").find("div#editSubcategoryPopup").modal();
+		});
+	});
+	
 
 
 	/*

@@ -112,6 +112,11 @@
        ?>
     </div>
 
+    <!-- Edit SUB CATEGORIES -->
+    <div id="edit_sub_category_container">
+    
+    </div>
+
     <!-- Add Sub Cat from pop up -->
     <div id="portal_add_sub_cat_from_popup">
     <?php //$this->load->view($this->template."/portal_settings/service/sub_cat_popup");

@@ -209,6 +209,20 @@ class Portal_Settings extends Dashboard_Controller {
 	}
 
 	/*
+	* Show pop up for edit subCat
+	*/
+	public function showEditSubCatPopup(){
+		$data['id'] = $this->input->post('id');
+		$data['root_cat_id'] = $this->input->post('main_cat_id');
+		$data['sub_cat_name'] = $this->input->post('sub_cat_name');
+		$data['main_category'] = $this->Settings_Model->getAllMainCat();
+
+		$return_result['html'] = $this->load->view($this->template."/portal_settings/service/show_edit_subcat_popup", $data, true);
+
+		echo json_encode($return_result);
+	}
+
+	/*
 	* Show pop for add SubCate from pop up list
 	*/
 

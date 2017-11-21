@@ -21,7 +21,7 @@
     
       </div>
       <div class="modal-footer vd_bg-white">      
-        <input type="submit" class="btn_save_category btn btn-primary" value="Save" />
+        <input type="submit" class="btn btn-primary" value="Save" />
       </div>    
      </form>
     </div>

@@ -19,11 +19,16 @@
 
             <?php foreach($sub_category as $cat): ?>
             <tr>
-              <td><?php echo $cat['name'] ?></td>
+              <td class="sub_cat_name"><?php echo $cat['name'] ?></td>
               <td class="menu-action">
-                <a data-id="<?php echo $cat['id'] ?>" data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-edit"></i></a>
+                <a data-id="<?php echo $cat['id'] ?>" 
+                  data-parent-cat-id="<?php echo $root_cat_id ?>"
+                  data-original-title="edit" data-toggle="tooltip"
+                  data-url = "<?php echo site_url() ?>admin/Portal_Settings/showEditSubCatPopup"
+                data-placement="top" class="editSubCat btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-edit"></i></a>
 
-                <a data-id="<?php echo $cat['id'] ?>" data-original-title="remove" data-toggle="tooltip" data-placement="top" class="btn_delete_sub_cat btn menu-icon vd_bd-red vd_red"><i class="fa fa-times"></i></a>
+                <a data-id="<?php echo $cat['id'] ?>" 
+                  data-original-title="remove" data-toggle="tooltip" data-placement="top" class="btn_delete_sub_cat btn menu-icon vd_bd-red vd_red"><i class="fa fa-times"></i></a>
               </td>
             </tr>
           <?php endforeach; ?>

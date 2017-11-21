@@ -5,11 +5,11 @@
         <button type="button" class="close vd_white" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title vd_white">ADD MAINCATEGORY</h4>
+        <h4 class="modal-title vd_white">Edit MAINCATEGORY</h4>
       </div>
       <div class="modal-body">
         <form method="post" 
-        action='<?php echo site_url() ?>admin/portal_settings/editMainCat' enctype="multipart/form-data">
+        action='<?php echo site_url() ?>admin/Portal_Settings/editMainCat' enctype="multipart/form-data">
       <div class="entry form-group">
         <div class="input-group">
           <input type="hidden" name="id" value="<?php echo $id ?>">
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="modal-footer vd_bg-white">      
-        <input type="submit" class="btn_save_category btn btn-primary" value="Save" />
+        <input type="submit" class="btn btn-primary" value="Save" />
       </div>
     </form>
       </div>    
