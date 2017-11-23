@@ -119,14 +119,18 @@
 
     <!-- Add Sub Cat from pop up -->
     <div id="portal_add_sub_cat_from_popup">
-    <?php //$this->load->view($this->template."/portal_settings/service/sub_cat_popup");
-       ?>
+    
     </div>
 
     <!-- ADD KEYWORDS -->
     <div id="portal_sett_cat_listing">
     <?php $this->load->view($this->template."/portal_settings/service/add_keyword");
        ?>
+    </div>
+
+    <!-- Add KEYWORDS pop up from list-->
+    <div id="portal_add_keyword_from_popup">
+    
     </div>
 
     <!-- INNER JS -->

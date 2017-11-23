@@ -277,8 +277,27 @@ class Portal_Settings extends Dashboard_Controller {
 		$root_cat_id = $this->input->post('root_cat_id');
 
 		$data['keywords'] = $this->Settings_Model->getTotalKeywordByCat($root_cat_id);
+		$data['root_cat_id'] = $root_cat_id;
 
 		$return_result['html'] = $this->load->view($this->template."/portal_settings/service/keywords_popup", $data, true);
+
+		echo json_encode($return_result);
+
+
+	}
+
+	/*
+	* show add KeywordPopUp from list
+	*/
+
+	public function show_add_keyword_popup_from_list(){
+		$root_cat_id = $this->input->post('root_cat_id');
+
+		$data['keywords'] = $this->Settings_Model->getTotalKeywordByCat($root_cat_id);
+		$data['root_cat_id'] = $root_cat_id;
+		$data['all_category'] = $this->Settings_Model->getAllCat();
+
+		$return_result['html'] = $this->load->view($this->template."/portal_settings/service/show_add_keyword_popup_from_list", $data, true);
 
 		echo json_encode($return_result);
 
@@ -318,7 +337,10 @@ class Portal_Settings extends Dashboard_Controller {
 
 	public function policy_terms(){
 		$data['content'] = $this->template."/portal_settings/policy_terms/main";
-		//$data['model_data'] = $this->My_Model->get_model_data('company_type');
+		$data['page_level_js'] = $this->template."/portal_settings/policy_terms/page_level_js";
+		$data['page_level_css'] = $this->template."/portal_settings/policy_terms/page_level_css";
+
+		$data['policy_terms'] = $this->My_Model->get_model_data('policy_terms');
 		$this->load->view($this->template."/index", $data);
 	}
 }

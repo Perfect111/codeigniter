@@ -609,6 +609,34 @@ console.log(form_data);
 	});
 
 	/*
+	* Show add keyword pop up from list
+	*/
+
+	$("body").on("click", "button.show_add_keyword_popup", function(){
+			$("div#portal_add_keyword_from_popup").html('');
+
+		var root_cat_id = $(this).attr('data-cat-id');
+		var url = site_url+"admin/Portal_Settings/show_add_keyword_popup_from_list";
+
+		var data = {
+			root_cat_id : root_cat_id
+		};
+
+		$.ajax({
+			url : url,
+			method : "POST",
+			datatype : 'JSON',
+			data : data
+		}).done(function(data){
+			var obj = JSON.parse(data);
+			$("div#portal_add_keyword_from_popup").html(obj.html);
+			$("div#portal_add_keyword_from_popup").find("div#addKeywordPopupFromList").modal();
+		});
+
+	});
+
+
+	/*
 	* Show subcat
 	*/
 	$("body").on("click", "a.btn_show_subcat", function(){

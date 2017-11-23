@@ -10,9 +10,9 @@
     data-target="#keywords"><?php echo $value['keyword_count']; ?></a></td>
 
     <td class="menu-action">
-      <a class="btn menu-icon vd_bd-blue vd_blue" data-toggle="modal" data-target="#addMaincategory">
+      <!--<a class="btn menu-icon vd_bd-blue vd_blue" data-toggle="modal" data-target="#addMaincategory">
         <i class="fa fa-plus" data-toggle="tooltip" data-original-title="add new" data-placement="top"></i>
-      </a>
+      </a>-->
 
 
       <a data-id="<?php echo $value['id']; ?>" data-original-title="edit" data-toggle="modal"
@@ -22,9 +22,9 @@
       </a>
 
 
-      <a data-id="<?php echo $value['id']; ?>" data-original-title="view" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-green vd_green">
+      <!--<a data-id="<?php echo $value['id']; ?>" data-original-title="view" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-green vd_green">
         <i class="fa fa-eye"></i>
-      </a>
+      </a>-->
 
 
       <a data-id="<?php echo $value['id']; ?>" data-original-title="remove" data-toggle="tooltip" data-placement="top" class="btn_cat_delete btn menu-icon vd_bd-red vd_red">

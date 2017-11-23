@@ -107,6 +107,12 @@
     	var site_url = "<?php echo site_url(); ?>";
     </script>
 
+    <?php 
+	if(isset($page_level_css)){
+		$this->load->view($page_level_css);
+	}
+?>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script type="text/javascript" src="js/html5shiv.js"></script>

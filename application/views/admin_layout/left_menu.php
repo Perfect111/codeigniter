@@ -339,7 +339,7 @@
 									<a href="reasons.html"><span class="menu-text"><i class="append-icon fa fa-fw fa-sort-amount-asc"></i> Reasons</span></a>
 								</li>
 								<li>
-									<a href="policy-terms.html"><span class="menu-text"><i class="append-icon fa fa-fw fa-gavel"></i> Policy&amp;Terms</span></a>
+									<a href="<?php echo site_url()."policy-terms" ?>"><span class="menu-text"><i class="append-icon fa fa-fw fa-gavel"></i> Policy&amp;Terms</span></a>
 								</li>
 								<li>
 									<a href="<?php echo site_url()."admin/Portal_Settings/service"?>"><span class="menu-text"><i class="append-icon glyphicon glyphicon-qrcode"></i> Our Services</span></a>

@@ -75,6 +75,11 @@
 
 <!-- Sky Icons -->
 <script type="text/javascript" src='<?php echo $this->assets_uri; ?>plugins/skycons/skycons.js'></script>
+<?php 
+	if(isset($page_level_js)){
+		$this->load->view($page_level_js);
+	}
+?>
 <script>
 	$(document).ready(function(){
 	  
@@ -755,6 +760,7 @@ $('#map1').vectorMap({
 </script>
 
 <script type="text/javascript" src="<?php echo $this->assets_uri; ?>admin_script.js"></script>
+<script type="text/javascript" src="<?php echo $this->assets_uri; ?>core_script.js"></script>
 <!-- Specific Page Scripts END -->
 
 
