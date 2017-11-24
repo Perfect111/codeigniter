@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //$route['folder'] = 'admin/dashboard';
 $route['default_controller'] = 'Dashboard';
 $route['policy-terms'] = 'admin/Portal_Settings/policy_terms';
+$route['projects'] = 'admin/Activity/projects';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 //$route['contact'] = 'home';

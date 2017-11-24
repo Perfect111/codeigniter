@@ -36,8 +36,8 @@
 							<div class="form-group">
 							    <select class="custom-select">
 									<option selected>Sort by Name</option>
-									<option value="1">A to Z</option>
-									<option value="2">Z to A</option>
+									<option value="asc">A to Z</option>
+									<option value="desc">Z to A</option>
 								</select>
 							</div>
 						<ul class="nav nav-tabs nav-stacked">
@@ -46,21 +46,18 @@
 									<div class="menu-icon"><i class="fa fa-file-text-o"></i></div>
 									<?php echo $terms['tab_name'] ?></a>
 									<div class="vd_panel-menu">
-										<div data-toggle="modal" data-target="#editTabName" class=" menu entypo-icon smaller-font"><i class="icon-pencil" data-action="remove" data-original-title="Remove" data-rel="tooltip"></i></div>
-										<div data-action="remove" data-original-title="Remove" data-rel="tooltip" class=" menu entypo-icon smaller-font"><i class="icon-cross"></i></div>
+										<div data-toggle="modal" data-target="#editTabName<?php echo $terms['id'] ?>" class=" menu entypo-icon smaller-font"><i class="icon-pencil" data-action="remove" data-original-title="Remove" data-rel="tooltip"></i></div>
+										<div data-id="<?php echo $terms['id'] ?>" data-action="remove" data-original-title="Remove" data-rel="tooltip" class="btn_policy_terms_delete menu entypo-icon smaller-font"><i class="icon-cross"></i></div>
 									</div>
 								</li>
+							<?php
+								$this->load->view('admin_layout/portal_settings/policy_terms/edit_tab_name', $terms);
+							 ?>	
 							<?php $i++; endforeach; ?>
-							<!--<li class="widget"><a data-toggle="tab" href="#disclaimer">
-								<div class="menu-icon"><i class="fa fa-file-text"></i></div>
-								Disclaimer</a>
-								<div class="vd_panel-menu">
-									<div data-toggle="modal" data-target="#editTabName" class=" menu entypo-icon smaller-font"><i class="icon-pencil" data-action="remove" data-original-title="Remove" data-rel="tooltip"></i></div>
-									<div data-action="remove" data-original-title="Remove" data-rel="tooltip" class=" menu entypo-icon smaller-font"><i class="icon-cross"></i></div>
-								</div>
-							</li>-->
                           </ul>
                         </div>
+
+
                         <div class="col-md-9">
                           <div class="tab-content no-bd mrgn0 pdng0">
                             <?php $i=1; foreach($policy_terms as $terms): ?>
@@ -69,26 +66,13 @@
 										<form class="form-horizontal" action="#" role="form">
 											<div class="form-group">
 												<div class="col-sm-12 controls">
-													<textarea name="editor1" data-rel="ckeditor" rows="3" ></textarea>
+													<textarea class="tab_description" name="editor<?php echo $terms['id'] ?>" data-rel="ckeditor" rows="3" ></textarea>
 												</div>
 											</div>
 										</form>
 									</div>
 	                            </div>
 	                        <?php $i++; endforeach; ?>
-                            
-                            <!--<div class="tab-pane fade" id="disclaimer">
-								<div class="panel-body-list">
-									<form class="form-horizontal" action="#" role="form">
-										<div class="form-group">
-											<div class="col-sm-12 controls">
-												<textarea name="editor1" data-rel="ckeditor" rows="3" ></textarea>
-											</div>
-										</div>
-									</form>
-								</div>
-                            </div>-->
-                            
                           </div>
                         </div><!-- row end -->
                       </div><!-- form-wizard -->

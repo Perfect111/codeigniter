@@ -103,6 +103,24 @@ $(document).ready(function(){
 		common_update_ajax_request(btn_save, container, fields, table_name);
 	});
 
+	/*
+	* Update Policy Terms by common update functionality
+	*/
+
+	$("body").on("click", "button.btn_update_policy", function(){
+		var btn_save = $(this);
+		var container = "div.form-container";
+		var table_name ="policy_terms";
+		//var url = btn_save.attr('data-url');
+
+		var fields = {
+			'id' : 'input',
+			'tab_name' : 'input'
+		}
+
+		common_update_ajax_request(btn_save, container, fields, table_name);
+	});
+
 
 	function common_update_ajax_request(btn_save, 
 		container, fields, table_name){
@@ -722,6 +740,34 @@ console.log(form_data);
 		var btn_action = $(this);
 
 		var table_name = "category";
+		var id = btn_action.attr('data-id');
+
+		common_delete_function(table_name, id);
+	});
+
+	/*
+	* Delete Company Type
+	*/
+
+	$("body").on("click", "a.delete_company_type", function(){
+		var btn_action = $(this);
+
+		var table_name = "company_type";
+		var id = btn_action.attr('data-id');
+
+		common_delete_function(table_name, id);
+	});
+
+	
+
+	/*
+	* Delete Policy Terms
+	*/
+
+	$("body").on("click", "div.btn_policy_terms_delete", function(){
+		var btn_action = $(this);
+
+		var table_name = "policy_terms";
 		var id = btn_action.attr('data-id');
 
 		common_delete_function(table_name, id);

@@ -182,7 +182,7 @@
 						<div class="child-menu" data-action="click-target">
 							<ul>
 								<li>
-									<a href="projects.html"><span class="menu-text"><span class="append-icon icon-archive"></span> All Projects</span></a>
+									<a href="<?php echo site_url() ?>projects"><span class="menu-text"><span class="append-icon icon-archive"></span> All Projects</span></a>
 								</li>
 								<li>
 									<a href="contracts.html"><span class="menu-text"><span class="append-icon icon-briefcase"></span> All Contracts</span></a>

@@ -79,6 +79,8 @@ $(document).ready(function() {
     $container.isotope({ filter: filterValue });
   });
 
-
+  $("textarea.tab_description").focusout(function(){
+  	alert("ho");
+  });
 });
 </script>

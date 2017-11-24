@@ -60,7 +60,7 @@
 										<a data-id="<?php echo $company_type['id']; ?>" data-toggle="modal" data-target="#" 
 										class="edit-company-type btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-pencil" data-original-title="Edit" data-toggle="tooltip" data-placement="top" ></i></a>
 
-										<a data-id="<?php echo $company_type['id']; ?>" data-toggle="modal" data-target="#" class="btn menu-icon vd_bd-red vd_red"><i class="fa fa-trash-o" data-original-title="Remove" data-toggle="tooltip" data-placement="top" ></i></a>
+										<a data-id="<?php echo $company_type['id']; ?>" data-toggle="modal" data-target="#" class="delete_company_type btn menu-icon vd_bd-red vd_red"><i class="fa fa-trash-o" data-original-title="Remove" data-toggle="tooltip" data-placement="top" ></i></a>
 									</div>
 								</td>
 							</tr>
