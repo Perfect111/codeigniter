@@ -102,6 +102,10 @@
     <script type="text/javascript" src="<?php echo $this->assets_uri; ?>js/modernizr.js"></script>
     <script type="text/javascript" src="<?php echo $this->assets_uri; ?>js/mobile-detect.min.js"></script>
     <script type="text/javascript" src="<?php echo $this->assets_uri; ?>js/mobile-detect-modernizr.js"></script>
+	<script type="text/javascript" src="<?php echo $this->assets_uri; ?>js/jquery.js"></script>
+	<script type="text/javascript" src="<?php echo $this->assets_uri; ?>js/bootstrap-tab.js"></script>
+
+
 
     <script type="text/javascript">
     	var site_url = "<?php echo site_url(); ?>";

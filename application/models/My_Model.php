@@ -45,9 +45,9 @@ class My_Model extends CI_Model{
 	}
 
 
-	public function get_model_data($table_name){
+	public function get_model_data($table_name, $sort='asc'){
 		$return_array = array();
-
+		// $this->db->order_by('tab_name', $sort);
 		$result = $this->db->get_where($table_name, array('is_deleted' => 0));
 
 		if($result->num_rows() > 0){

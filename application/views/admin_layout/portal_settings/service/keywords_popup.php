@@ -21,21 +21,45 @@
             <tr>
               <td><?php echo $Keyword['name']; ?></td>
               <td class="menu-action">
-                <a data-id="<?php echo $Keyword['id']; ?>" 
-                  data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-edit"></i></a>
+                <a data-id="<?php echo $Keyword['id']; ?>" data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-edit"></i></a>
 
                 <a data-id="<?php echo $Keyword['id']; ?>" data-original-title="remove" data-toggle="tooltip" data-placement="top" class="btn_delete_keywords btn menu-icon vd_bd-red vd_red"><i class="fa fa-times"></i></a>
               </td>
             </tr>
           <?php endforeach; ?>
-            
+            <!--<tr>
+              <td>Health</td>
+              <td class="menu-action">
+                <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-edit"></i></a>
+                <a data-original-title="remove" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-red vd_red"><i class="fa fa-times"></i></a>
+              </td>
+            </tr>			  
+            <tr>
+              <td>Salon</td>
+              <td class="menu-action">
+                <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-edit"></i></a>
+                <a data-original-title="remove" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-red vd_red"><i class="fa fa-times"></i></a>
+              </td>
+            </tr>
+            <tr>
+              <td>Health</td>
+              <td class="menu-action">
+                <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-edit"></i></a>
+                <a data-original-title="remove" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-red vd_red"><i class="fa fa-times"></i></a>
+              </td>
+            </tr>			  
+            <tr>
+              <td>Salon</td>
+              <td class="menu-action">
+                <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-yellow vd_yellow"><i class="fa fa-edit"></i></a>
+                <a data-original-title="remove" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bd-red vd_red"><i class="fa fa-times"></i></a>
+              </td>
+            </tr>-->
           </tbody>
         </table>
       </div>	  
       <div class="modal-footer vd_bg-white">
-		  <button type="button" class="btn btn-primary show_add_keyword_popup" 
-      data-cat-id ="<?php echo $root_cat_id; ?>"
-      data-toggle="modal"><i class="fa fa-plus-circle"></i> Add New</button>
+		  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addKeyword"><i class="fa fa-plus-circle"></i> Add New</button>
         <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
       </div>
     </div>

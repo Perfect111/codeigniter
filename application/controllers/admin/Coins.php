@@ -24,7 +24,7 @@ class Coins extends Dashboard_Controller {
 		$data['assets_uri'] = base_url().$this->config->item('dashboard_assets')."/";
 		$data['template'] = $template;
 		$data['all_coins'] = $this->My_Model->get_model_data($table_name='coins');
-		
+		//print_r($data['all_coins']);die();
 		$data['content'] = $template."/coins/main";
 		$this->load->view($template."/index", $data);
 	}

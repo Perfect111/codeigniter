@@ -121,6 +121,28 @@ $(document).ready(function(){
 		common_update_ajax_request(btn_save, container, fields, table_name);
 	});
 
+	/*
+	* Sorting ploicy term
+	*/
+	$('select.sorting-policy').on('change', function(){
+		var sort_value = $(this).val();
+		var url = site_url+"admin/Portal_Settings/policy_sorting";
+
+		var data = {
+			sort_value : sort_value
+		};
+
+		$.ajax({
+			url : url,
+			method : "POST",
+			datatype : "JSON",
+			data : data
+		}).done(function(data){
+			location.reload();
+		});
+	});
+		
+
 
 	function common_update_ajax_request(btn_save, 
 		container, fields, table_name){
@@ -959,4 +981,86 @@ function common_delete_function(table_name, id){
 			$("div#common_popup_container").html(obj.html);
 			$("div#common_popup_container").find("div#common_remove_confirm").modal();
 		});
+}
+
+$("button.btn-add-hold").click(function(){
+		var btn_save = $(this);
+		var container = "div.addhold";
+		var table_name ="job_title";
+		// //var url = btn_save.attr('data-url');
+
+		var fields = {
+			'job_id' : 'input',
+			'company_id' : 'input',		
+			'add_hold' : 'input'		
+		}
+		console.log(fields);
+
+		send_ajax_request(btn_save, container, fields, table_name);
+	});
+
+
+$("button.btn-add-deny").click(function(){
+		var btn_save = $(this);
+		var container = "div.addhold";
+		var table_name ="job_title";
+		// //var url = btn_save.attr('data-url');
+
+		var fields = {
+			'job_id' : 'input',
+			'company_id' : 'input',		
+			'add_hold' : 'input'		
+		}
+		console.log(fields);
+
+		send_ajax_request(btn_save, container, fields, table_name);
+	});
+
+$("button.btn-add-block").click(function(){
+		var btn_save = $(this);
+		var container = "div.addhold";
+		var table_name ="job_title";
+		// //var url = btn_save.attr('data-url');
+
+		var fields = {
+			'job_id' : 'input',
+			'company_id' : 'input',		
+			'add_hold' : 'input'		
+		}
+		console.log(fields);
+
+		send_ajax_request(btn_save, container, fields, table_name);
+	});
+
+function send_ajax_request(btn_save,container, fields, table_name){
+	console.log(fields)
+	var form_container = btn_save.closest(container);
+	
+	var url = site_url+"admin/Activity/send_message";
+
+	var data = {};
+
+
+	for(var prop in fields){
+		var value = form_container.find(fields[prop]+"#"+prop).val();
+		data[prop] = value;
+	}
+
+	data['table_name'] = table_name;
+
+	console.log(data);
+	// console.log()
+	// alert("asdf");
+
+	
+	$.ajax({
+		url : url,
+		method : "POST",
+		datatype : 'JSON',
+		data : data
+	}).done(function(data){
+		alert(data);
+	});
+	
+
 }

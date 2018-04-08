@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         <form method="post"
-        action='<?php echo site_url() ?>admin/portal_settings/addKeword'>
+        action='<?php echo site_url() ?>admin/Portal_Settings/addKeword'>
           <div class="form-group">
             <select class="custom-select category_id" name="category_id">
                     <option value="0">Please Select Category</option>
@@ -39,7 +39,7 @@
     </form>
       </div>    
       <div class="modal-footer vd_bg-white">      
-        <button type="button" class="btn btn-primary btn_save_keywords" data-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-primary btn_save_keywords">Save</button>
       </div>
     </div>
   </div>

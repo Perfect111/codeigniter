@@ -79,8 +79,39 @@ $(document).ready(function() {
     $container.isotope({ filter: filterValue });
   });
 
-  $("textarea.tab_description").focusout(function(){
-  	alert("ho");
+
+
+  
+  $("textarea.tab_description").each(function(){
+  	var textarea_id = $(this).attr('id');
+  	//alert(textarea_id);
+  	//CKEDITOR.instances[textarea_id].on('blur', function(){
+ // 		alert("hi");
+//  	});
+ var editor = CKEDITOR.replace(textarea_id);
+editor.on('blur', function(){
+	var text = editor.getData();
+	var id = $("#"+textarea_id).attr('data-id');
+
+	//var sort_value = $(this).val();
+		var url = site_url+"admin/Portal_Settings/save_polycy_text";
+
+		var data = {
+			text : text,
+			id : id
+		};
+
+		console.log(data)
+
+		$.ajax({
+			url : url,
+			method : "POST",
+			datatype : "JSON",
+			data : data
+		}).done(function(data){
+			//location.reload();
+		});
+});
   });
 });
 </script>

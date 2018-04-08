@@ -40,7 +40,8 @@ class Dashboard extends CI_Controller {
             	redirect(site_url($redirect_login_page));
             } 
 		}else{ 
-			$this->authentication->checkAuthentication($post, $ip=0);
+			$this->home();
+			// $this->authentication->checkAuthentication($post, $ip=0);
 		}
 	}
 
@@ -48,9 +49,9 @@ class Dashboard extends CI_Controller {
 
 		$redirect_login_page = $this->config->item('login_url');
 
-		if (!$this->authentication->checkUserLoggedIn()) {
-            redirect(site_url($redirect_login_page));
-        }
+		// if (!$this->authentication->checkUserLoggedIn()) {
+        //     redirect(site_url($redirect_login_page));
+        // }
 
 
 		$template = $this->template;

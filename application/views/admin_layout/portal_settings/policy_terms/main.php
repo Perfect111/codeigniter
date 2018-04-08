@@ -34,10 +34,13 @@
 							</div>
 							
 							<div class="form-group">
-							    <select class="custom-select">
-									<option selected>Sort by Name</option>
-									<option value="asc">A to Z</option>
-									<option value="desc">Z to A</option>
+                  <?php
+                  $sort = $this->session->userdata('policy_sorting');
+                   ?>
+							    <select class="sorting-policy custom-select">
+									<option >Sort by Name</option>
+									<option <?php if($sort == 'asc') echo "selected" ?> value="asc">A to Z</option>
+									<option <?php if($sort == 'desc') echo "selected" ?> value="desc">Z to A</option>
 								</select>
 							</div>
 						<ul class="nav nav-tabs nav-stacked">
@@ -66,7 +69,7 @@
 										<form class="form-horizontal" action="#" role="form">
 											<div class="form-group">
 												<div class="col-sm-12 controls">
-													<textarea class="tab_description" name="editor<?php echo $terms['id'] ?>" data-rel="ckeditor" rows="3" ></textarea>
+													<textarea data-id="<?php echo $terms['id'] ?>" id="editor<?php echo $terms['id'] ?>" class="tab_description" name="editor<?php echo $terms['id'] ?>" data-rel="ckeditor" rows="3" ><?php echo $terms['description']?></textarea>
 												</div>
 											</div>
 										</form>

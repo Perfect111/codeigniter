@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class sortal_settings extends Dashboard_Controller {
+class Portal_Settings extends Dashboard_Controller {
 
 	public $current_class_name;
 	public $assets_uri;
@@ -134,12 +134,64 @@ class sortal_settings extends Dashboard_Controller {
 	*/
 
 	public function addMainCat(){
-		die("hi");
-		$cat_names = $this->input->post('cat_names');
+		
+		$cat_names = $this->input->post('name');		
+		foreach ($_FILES['cat_image']['name'] as $name => $value){
+				if(is_uploaded_file($_FILES['cat_image']['tmp_name'][$name])) {
+					
+				$sourcePath = $_FILES['cat_image']['tmp_name'][$name];
+				//$imgContent = addslashes(file_get_contents($image));
+				$targetPath = FCPATH."uploads/images/category/".$_FILES['cat_image']['name'][$name];
+				if(move_uploaded_file($sourcePath,$targetPath)) {
+						$file_name[] = $_FILES['cat_image']['name'][$name];
+					}
+			}
+		}
 
-		$return_result = $this->Settings_Model->addMainCat($cat_names);
+		$return_result = $this->Settings_Model->addMainCat($cat_names, $main_cat_id=0, $file_name);
+	
 
 		echo json_encode($return_result);
+		redirect('admin/Portal_Settings/service');
+	}
+
+	/*
+	* Edit Main Category
+	*/
+
+	public function editMainCat(){
+		$id = $this->input->post('id');
+		$cat_name = $this->input->post('name');
+		$file_name = array();
+
+		
+			foreach ($_FILES['cat_image']['name'] as $name => $value){
+					if(is_uploaded_file($_FILES['cat_image']['tmp_name'][$name])) {
+						
+					$sourcePath = $_FILES['cat_image']['tmp_name'][$name];
+					//$imgContent = addslashes(file_get_contents($image));
+					$targetPath = FCPATH."uploads/images/category/".$_FILES['cat_image']['name'][$name];
+					if(move_uploaded_file($sourcePath,$targetPath)) {
+							$file_name[] = $_FILES['cat_image']['name'][$name];
+						}
+				}
+			}
+		
+
+		//print_r($file_name); die();
+		$data_array['name'] = $cat_name;
+		
+
+		if(!empty($file_name)){
+			$data_array['image'] = $file_name[0];
+		}
+
+		$this->My_Model->update($table_name="category", 
+			$data_array, $id);
+	
+		//print_r($data_array); die();
+		echo json_encode($return_result);
+		redirect('admin/Portal_Settings/service');
 	}
 
 
@@ -155,6 +207,33 @@ class sortal_settings extends Dashboard_Controller {
 
 		echo json_encode($return_result);
 	}
+
+	/*
+	* Show pop up for edit subCat
+	*/
+	public function showEditSubCatPopup(){
+		$data['id'] = $this->input->post('id');
+		$data['root_cat_id'] = $this->input->post('main_cat_id');
+		$data['sub_cat_name'] = $this->input->post('sub_cat_name');
+		$data['main_category'] = $this->Settings_Model->getAllMainCat();
+
+		$return_result['html'] = $this->load->view($this->template."/portal_settings/service/show_edit_subcat_popup", $data, true);
+
+		echo json_encode($return_result);
+	}
+
+	/*
+	* Show pop for add SubCate from pop up list
+	*/
+
+	public function showAddSubCatPopup(){
+		$data['root_cat_id'] = $this->input->post('root_cat_id');
+		$data['main_category'] = $this->Settings_Model->getAllMainCat();
+
+		$return_result['html'] = $this->load->view($this->template."/portal_settings/service/add_subcat_from_popup", $data, true);
+
+		echo json_encode($return_result);
+	}	
 
 	/*
 	* Add keywords
@@ -178,6 +257,7 @@ class sortal_settings extends Dashboard_Controller {
 	public function showSubCatPopUp(){
 		$root_cat_id = $this->input->post('root_cat_id');
 
+		$data['root_cat_id'] = $root_cat_id;
 		$data['sub_category'] = $this->Settings_Model->getTotalSubcatByRootCat($root_cat_id);
 		//$data['keywords'] = $this->Settings_Model->getTotalKeywordByCat($root_cat_id);
 
@@ -197,8 +277,27 @@ class sortal_settings extends Dashboard_Controller {
 		$root_cat_id = $this->input->post('root_cat_id');
 
 		$data['keywords'] = $this->Settings_Model->getTotalKeywordByCat($root_cat_id);
+		$data['root_cat_id'] = $root_cat_id;
 
 		$return_result['html'] = $this->load->view($this->template."/portal_settings/service/keywords_popup", $data, true);
+
+		echo json_encode($return_result);
+
+
+	}
+
+	/*
+	* show add KeywordPopUp from list
+	*/
+
+	public function show_add_keyword_popup_from_list(){
+		$root_cat_id = $this->input->post('root_cat_id');
+
+		$data['keywords'] = $this->Settings_Model->getTotalKeywordByCat($root_cat_id);
+		$data['root_cat_id'] = $root_cat_id;
+		$data['all_category'] = $this->Settings_Model->getAllCat();
+
+		$return_result['html'] = $this->load->view($this->template."/portal_settings/service/show_add_keyword_popup_from_list", $data, true);
 
 		echo json_encode($return_result);
 
@@ -237,8 +336,43 @@ class sortal_settings extends Dashboard_Controller {
 	*/
 
 	public function policy_terms(){
+		$sort = $this->session->userdata('policy_sorting');
+		if(!empty($sort)){
+			$sort = $sort;
+		}else{
+			$sort = 'asc';
+		}
 		$data['content'] = $this->template."/portal_settings/policy_terms/main";
-		//$data['model_data'] = $this->My_Model->get_model_data('company_type');
+		$data['page_level_js'] = $this->template."/portal_settings/policy_terms/page_level_js";
+		$data['page_level_css'] = $this->template."/portal_settings/policy_terms/page_level_css";
+
+		$data['policy_terms'] = $this->My_Model->get_model_data('policy_terms', $sort);
+
 		$this->load->view($this->template."/index", $data);
+	}
+
+	/*
+	* This function is used for changing sort 
+	* value of policy term
+	*/
+
+	public function policy_sorting(){
+		$sort_value = $this->input->post('sort_value');
+
+		$this->session->set_userdata('policy_sorting', $sort_value);
+
+		$policy_sorting = $this->session->userdata('policy_sorting');
+		echo $policy_sorting;
+	}
+
+	/*
+	* This function is used for changing sort 
+	* value of policy term
+	*/
+	public function save_polycy_text(){
+		$text = $this->input->post('text');
+		$id = $this->input->post('id');
+
+		$this->db->update('policy_terms', array('description' => $text), array('id' => $id));
 	}
 }
